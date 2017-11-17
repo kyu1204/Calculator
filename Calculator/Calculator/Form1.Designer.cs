@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MC = new System.Windows.Forms.Button();
             this.M_plus = new System.Windows.Forms.Button();
             this.M_minus = new System.Windows.Forms.Button();
@@ -51,6 +52,11 @@
             this.ButtonDot = new System.Windows.Forms.Button();
             this.Result = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.resultArrayBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultArrayBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MC
@@ -282,11 +288,30 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // listBox1
+            // 
+            this.listBox1.DataSource = this.resultArrayBindingSource;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(294, 13);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(284, 292);
+            this.listBox1.TabIndex = 2;
+            // 
+            // form1BindingSource
+            // 
+            this.form1BindingSource.DataSource = typeof(Calculator.Form1);
+            // 
+            // resultArrayBindingSource
+            // 
+            this.resultArrayBindingSource.DataSource = typeof(Calculator.resultArray);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 305);
+            this.ClientSize = new System.Drawing.Size(590, 311);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Plus);
             this.Controls.Add(this.Minus);
@@ -311,7 +336,9 @@
             this.Controls.Add(this.M_plus);
             this.Controls.Add(this.MC);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Calculator";
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultArrayBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,6 +369,9 @@
         private System.Windows.Forms.Button ButtonDot;
         private System.Windows.Forms.Button Result;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.BindingSource form1BindingSource;
+        private System.Windows.Forms.BindingSource resultArrayBindingSource;
     }
 }
 

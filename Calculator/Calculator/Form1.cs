@@ -13,6 +13,7 @@ namespace Calculator
     public partial class Form1 : Form
     {
         List<string> input; //전체 연산 행
+        int count = 0;
         string number; //입력된 숫자
         double number2 = 0; //계산될 숫자
 
@@ -21,11 +22,13 @@ namespace Calculator
             InitializeComponent();
 
             input = new List<string>(); //초기화
+            //listBox1.DataSource = input;
 
         }
         private void ShowText() //number 값 화면에 띄우기
         {
             textBox1.Text = number;
+            textBox1.Update();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,44 +93,53 @@ namespace Calculator
 
         private void Plus_Click(object sender, EventArgs e)
         {
+            number += "+";
+            ShowText();
             //input.Add(number);
             //input.Add("+");
-            if (number2 != 0)
-            {
-                number2 += double.Parse(number);
-                number = number2.ToString();
-                number2 = 0;
-            }
-            else
-            {
-                number2 = double.Parse(number);
-                number = "";
-            }
-            ShowText();
+            //if (number2 != 0)
+            //{
+            //    number2 += double.Parse(number);
+            //    number = number2.ToString();
+            //    number2 = 0;
+            //    ShowText();
+            //}
+            //else
+            //{
+            //    number2 = double.Parse(number);
+            //    number = "";
+            //    ShowText();
+            //}
         }
 
         private void Minus_Click(object sender, EventArgs e)
         {
-            input.Add(number);
-            input.Add("-");
-            number = "";
+            number += "-";
             ShowText();
+            //input.Add(number);
+            //input.Add("-");
+            //number = "";
+            //ShowText();
         }
 
         private void Multi_Click(object sender, EventArgs e)
         {
-            input.Add(number);
-            input.Add("*");
-            number = "";
+            number += "×";
             ShowText();
+            //input.Add(number);
+            //input.Add("*");
+            //number = "";
+            //ShowText();
         }
 
         private void Division_Click(object sender, EventArgs e)
         {
-            input.Add(number);
-            input.Add("/");
-            number = "";
+            number += "÷";
             ShowText();
+            //input.Add(number);
+            //input.Add("/");
+            //number = "";
+            //ShowText();
         }
 
         private void Negative_Click(object sender, EventArgs e)
@@ -152,36 +164,36 @@ namespace Calculator
 
         private void Result_Click(object sender, EventArgs e)
         {
-            double num = 0.0;
-            double num2 = 0.0;
+            input.Add(number);
             
-           foreach(string item in input)
-            {
-                switch(item)
-                {
-                    case "+":
-                        {
-                            break;
-                        }
-                    case "-":
-                        {
-                            break;
-                        }
-                    case "*":
-                        {
-                            break;
-                        }
-                    case "/":
-                        {
-                            break;
-                        }
-                    default: //숫자
-                        {
-                            num = double.Parse(item);
-                            break;
-                        }
-                }
-            }
+            
+           //foreach(string item in input)
+           // {
+           //     switch(item)
+           //     {
+           //         case "+":
+           //             {
+           //                 break;
+           //             }
+           //         case "-":
+           //             {
+           //                 break;
+           //             }
+           //         case "*":
+           //             {
+           //                 break;
+           //             }
+           //         case "/":
+           //             {
+           //                 break;
+           //             }
+           //         default: //숫자
+           //             {
+           //                 num = double.Parse(item);
+           //                 break;
+           //             }
+           //     }
+           // }
         }
     }
 }
