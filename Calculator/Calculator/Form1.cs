@@ -13,148 +13,194 @@ namespace Calculator
     public partial class Form1 : Form
     {
         List<string> input; //전체 연산 행
-        int count = 0;
-        string number; //입력된 숫자
-        double number2 = 0; //계산될 숫자
+        string view; //보여지는 숫자
+        double total = 0; //실제 값의 숫자
+        double number = 0;
 
         public Form1()
         {
             InitializeComponent();
 
             input = new List<string>(); //초기화
-            //listBox1.DataSource = input;
+            listBox1.DataSource = input;
 
         }
-        private void ShowText() //number 값 화면에 띄우기
+        private void ShowText(string v) //total 값 화면에 띄우기
         {
-            textBox1.Text = number;
-            textBox1.Update();
+            textBox1.Text = v;
+            textBox1.Refresh();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            number += "1"; 
-            ShowText();
+            view += "1";
+            ShowText(view);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            number += "2";
-            ShowText();
+            view += "2";
+            ShowText(view);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            number += "3";
-            ShowText();
+            view += "3";
+            ShowText(view);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            number += "4";
-            ShowText();
+            view += "4";
+            ShowText(view);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            number += "5";
-            ShowText();
+            view += "5";
+            ShowText(view);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            number += "6";
-            ShowText();
+            view += "6";
+            ShowText(view);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            number += "7";
-            ShowText();
+            view += "7";
+            ShowText(view);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            number += "8";
-            ShowText();
+            view += "8";
+            ShowText(view);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            number += "9";
-            ShowText();
+            view += "9";
+            ShowText(view);
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
-            number += "0";
-            ShowText();
+            view += "0";
+            ShowText(view);
         }
 
         private void Plus_Click(object sender, EventArgs e)
         {
-            number += "+";
-            ShowText();
-            //input.Add(number);
-            //input.Add("+");
-            //if (number2 != 0)
-            //{
-            //    number2 += double.Parse(number);
-            //    number = number2.ToString();
-            //    number2 = 0;
-            //    ShowText();
-            //}
-            //else
-            //{
-            //    number2 = double.Parse(number);
-            //    number = "";
-            //    ShowText();
-            //}
+            if (view != null)
+            {
+                if (total != 0)
+                {
+                    total += double.Parse(view);
+                    input.Add(view);
+                    input.Add("+");
+                    view = null;
+                }
+                else
+                {
+                    total = double.Parse(view);
+                    input.Add(view);
+                    input.Add("+");
+                    view = null;
+                }
+            }
+            else
+            {
+                total += double.Parse(input[input.Count - 2]);
+                input.Add(input[input.Count - 2]);
+                input.Add("+");
+            }
+
+            ShowText(total.ToString());
         }
 
         private void Minus_Click(object sender, EventArgs e)
         {
-            number += "-";
-            ShowText();
-            //input.Add(number);
-            //input.Add("-");
-            //number = "";
-            //ShowText();
+            if (view != null)
+            {
+                if (total != 0)
+                {
+                    total -= double.Parse(view);
+                    input.Add(view);
+                    input.Add("-");
+                    view = null;
+                }
+                else
+                {
+                    total = double.Parse(view);
+                    input.Add(view);
+                    input.Add("-");
+                    view = null;
+                }
+            }
+            else
+            {
+                total -= double.Parse(input[input.Count - 2]);
+                input.Add(input[input.Count - 2]);
+                input.Add("-");
+            }
+
+            ShowText(total.ToString());
         }
 
         private void Multi_Click(object sender, EventArgs e)
         {
-            number += "×";
-            ShowText();
-            //input.Add(number);
-            //input.Add("*");
-            //number = "";
-            //ShowText();
+            if (view != null)
+            {
+                if (total != 0)
+                {
+                    total *= double.Parse(view);
+                    input.Add(view);
+                    input.Add("*");
+                    view = null;
+                }
+                else
+                {
+                    total = double.Parse(view);
+                    input.Add(view);
+                    input.Add("*");
+                    view = null;
+                }
+            }
+            else
+            {
+                total *= double.Parse(input[input.Count - 2]);
+                input.Add(input[input.Count - 2]);
+                input.Add("*");
+            }
+
+            ShowText(total.ToString());
         }
 
         private void Division_Click(object sender, EventArgs e)
         {
-            number += "÷";
-            ShowText();
-            //input.Add(number);
+            view += "÷";
+            ShowText(view);
+            //input.Add(total);
             //input.Add("/");
-            //number = "";
+            //total = "";
             //ShowText();
         }
 
         private void Negative_Click(object sender, EventArgs e)
         {
-            int temp = int.Parse(number);
+            int temp = int.Parse(view);
             temp = temp * -1;
-            number = temp.ToString();
-            ShowText();
+            view = temp.ToString();
+            ShowText(view);
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            number = "";
-            input.Clear();
-            ShowText();
+            view = null;
+            textBox1.Clear();
+            ShowText(view);
         }
 
         private void ButtonDot_Click(object sender, EventArgs e)
@@ -164,36 +210,22 @@ namespace Calculator
 
         private void Result_Click(object sender, EventArgs e)
         {
-            input.Add(number);
-            
-            
-           //foreach(string item in input)
-           // {
-           //     switch(item)
-           //     {
-           //         case "+":
-           //             {
-           //                 break;
-           //             }
-           //         case "-":
-           //             {
-           //                 break;
-           //             }
-           //         case "*":
-           //             {
-           //                 break;
-           //             }
-           //         case "/":
-           //             {
-           //                 break;
-           //             }
-           //         default: //숫자
-           //             {
-           //                 num = double.Parse(item);
-           //                 break;
-           //             }
-           //     }
-           // }
+            switch(input[input.Count-1])
+            {
+                case "+":
+                    total += double.Parse(view);
+                    break;
+                case "-":
+                    total -= double.Parse(view);
+                    break;
+                case "*":
+                    total *= double.Parse(view);
+                    break;
+                case "/":
+                    total += double.Parse(view);
+                    break;
+            }
+            ShowText(total.ToString());
         }
     }
 }
