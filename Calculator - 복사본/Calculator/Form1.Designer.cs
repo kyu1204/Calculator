@@ -300,7 +300,6 @@
             // 
             // form1BindingSource
             // 
-            this.form1BindingSource.DataSource = typeof(Calculator.Form1);
             // 
             // textBox2
             // 
