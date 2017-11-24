@@ -184,29 +184,44 @@ namespace Calculator
 
         private void Plus_Click(object sender, EventArgs e)
         {
-            history += "+";
-            ShowHistory(history);
-            if (total == null)
+            if (view != null)
             {
-                total = view;
-                input.Add(view);
-                input.Add("+");
-                view = null;
-            }
-            else
-            {
-                total = ResultValue(double.Parse(view));
-                if(DivisionError(total) == 0)
+                history += "+";
+                ShowHistory(history);
+                if (total == null)
                 {
-                    ShowText(total);
+                    total = view;
+                    input.Add(view);
+                    input.Add("+");
                     view = null;
-                    total = null;
-                    input.Clear();
                 }
                 else
                 {
+                    total = ResultValue(double.Parse(view));
+                    if (DivisionError(total) == 0)
+                    {
+                        ShowText(total);
+                        view = null;
+                        total = null;
+                        input.Clear();
+                    }
+                    else
+                    {
+                        input.Add("+");
+                        view = null;
+                        ShowText(total);
+                    }
+                }
+            }
+            else
+            {
+                if (total != null)
+                {
+                    history += input[input.Count - 2];
+                    history += "+";
+                    ShowHistory(history);
+                    total = ResultValue(double.Parse(input[input.Count - 2]));
                     input.Add("+");
-                    view = null;
                     ShowText(total);
                 }
             }
@@ -214,29 +229,44 @@ namespace Calculator
 
         private void Minus_Click(object sender, EventArgs e)
         {
-            history += "-";
-            ShowHistory(history);
-            if (total == null)
+            if (view != null)
             {
-                total = view;
-                input.Add(view);
-                input.Add("-");
-                view = null;
-            }
-            else
-            {
-                total = ResultValue(double.Parse(view));
-                if (DivisionError(total) == 0)
+                history += "-";
+                ShowHistory(history);
+                if (total == null)
                 {
-                    ShowText(total);
+                    total = view;
+                    input.Add(view);
+                    input.Add("-");
                     view = null;
-                    total = null;
-                    input.Clear();
                 }
                 else
                 {
+                    total = ResultValue(double.Parse(view));
+                    if (DivisionError(total) == 0)
+                    {
+                        ShowText(total);
+                        view = null;
+                        total = null;
+                        input.Clear();
+                    }
+                    else
+                    {
+                        input.Add("-");
+                        view = null;
+                        ShowText(total);
+                    }
+                }
+            }
+            else
+            {
+                if (total != null)
+                {
+                    history += input[input.Count - 2];
+                    history += "-";
+                    ShowHistory(history);
+                    total = ResultValue(double.Parse(input[input.Count - 2]));
                     input.Add("-");
-                    view = null;
                     ShowText(total);
                 }
             }
@@ -244,29 +274,44 @@ namespace Calculator
 
         private void Multi_Click(object sender, EventArgs e)
         {
-            history += "*";
-            ShowHistory(history);
-            if (total == null)
+            if (view != null)
             {
-                total = view;
-                input.Add(view);
-                input.Add("*");
-                view = null;
-            }
-            else
-            {
-                total = ResultValue(double.Parse(view));
-                if (DivisionError(total) == 0)
+                history += "×";
+                ShowHistory(history);
+                if (total == null)
                 {
-                    ShowText(total);
+                    total = view;
+                    input.Add(view);
+                    input.Add("*");
                     view = null;
-                    total = null;
-                    input.Clear();
                 }
                 else
                 {
-                    input.Add("*");
-                    view = null;
+                    total = ResultValue(double.Parse(view));
+                    if (DivisionError(total) == 0)
+                    {
+                        ShowText(total);
+                        view = null;
+                        total = null;
+                        input.Clear();
+                    }
+                    else
+                    {
+                        input.Add("*");
+                        view = null;
+                        ShowText(total);
+                    }
+                }
+            }
+            else
+            {
+                if (total != null)
+                {
+                    history += input[input.Count - 2];
+                    history += "×";
+                    ShowHistory(history);
+                    total = ResultValue(double.Parse(input[input.Count - 2]));
+                    input.Add("×");
                     ShowText(total);
                 }
             }
@@ -274,29 +319,44 @@ namespace Calculator
 
         private void Division_Click(object sender, EventArgs e)
         {
-            history += "÷";
-            ShowHistory(history);
-            if (total == null)
+            if (view != null)
             {
-                total = view;
-                input.Add(view);
-                input.Add("/");
-                view = null;
-            }
-            else
-            {
-                total = ResultValue(double.Parse(view));
-                if (DivisionError(total) == 0)
+                history += "÷";
+                ShowHistory(history);
+                if (total == null)
                 {
-                    ShowText(total);
+                    total = view;
+                    input.Add(view);
+                    input.Add("/");
                     view = null;
-                    total = null;
-                    input.Clear();
                 }
                 else
                 {
-                    input.Add("/");
-                    view = null;
+                    total = ResultValue(double.Parse(view));
+                    if (DivisionError(total) == 0)
+                    {
+                        ShowText(total);
+                        view = null;
+                        total = null;
+                        input.Clear();
+                    }
+                    else
+                    {
+                        input.Add("/");
+                        view = null;
+                        ShowText(total);
+                    }
+                }
+            }
+            else
+            {
+                if (total != null)
+                {
+                    history += input[input.Count - 2];
+                    history += "÷";
+                    ShowHistory(history);
+                    total = ResultValue(double.Parse(input[input.Count - 2]));
+                    input.Add("÷");
                     ShowText(total);
                 }
             }
@@ -344,20 +404,14 @@ namespace Calculator
                 history += total;
                 ShowHistory(history);
 
-                history = null;
                 view = null;
                 ShowText(total);
 
-                string tmp = null;
-                foreach (string item in input)
-                {
-                    tmp += item;
-                }
-                tmp += "=";
-                tmp += total;
-                
                 input.Clear();
-                total = null;
+                historys.Add(history);
+                listBox1.Invalidate();
+                history = null;
+
             }
         }
     }
