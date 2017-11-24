@@ -12,20 +12,26 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
-        List<string> history; //연산 기록;
+        List<string> historys; //연산 기록;
         List<string> input; //전체 연산 행
+        string history;
         string view; //현재 입력한 숫자
         string total; //연산 완료된 숫자
-        double number = 0;
 
         public Form1()
         {
             InitializeComponent();
 
             input = new List<string>(); //초기화
-            history = new List<string>();
-            listBox1.DataSource = input;
+            historys = new List<string>();
+            listBox1.DataSource = historys;
+            listBox1.Invalidate();
 
+        }
+        private void ShowHistory(string v)
+        {
+            textBox2.Text = v;
+            textBox2.Refresh();
         }
         private void ShowText(string v) //total 값 화면에 띄우기
         {
@@ -36,60 +42,89 @@ namespace Calculator
         private void button1_Click(object sender, EventArgs e)
         {
             view += "1";
+            history += "1";
             ShowText(view);
+            ShowHistory(history);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             view += "2";
+            history += "2";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             view += "3";
+            history += "3";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             view += "4";
+            history += "4";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             view += "5";
+            history += "5";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             view += "6";
+            history += "6";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             view += "7";
+            history += "7";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             view += "8";
+            history += "8";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             view += "9";
+            history += "9";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
             view += "0";
+            history += "0";
+
+            ShowHistory(history);
             ShowText(view);
         }
 
@@ -149,6 +184,8 @@ namespace Calculator
 
         private void Plus_Click(object sender, EventArgs e)
         {
+            history += "+";
+            ShowHistory(history);
             if (total == null)
             {
                 total = view;
@@ -177,6 +214,8 @@ namespace Calculator
 
         private void Minus_Click(object sender, EventArgs e)
         {
+            history += "-";
+            ShowHistory(history);
             if (total == null)
             {
                 total = view;
@@ -205,6 +244,8 @@ namespace Calculator
 
         private void Multi_Click(object sender, EventArgs e)
         {
+            history += "*";
+            ShowHistory(history);
             if (total == null)
             {
                 total = view;
@@ -233,6 +274,8 @@ namespace Calculator
 
         private void Division_Click(object sender, EventArgs e)
         {
+            history += "÷";
+            ShowHistory(history);
             if (total == null)
             {
                 total = view;
@@ -264,14 +307,19 @@ namespace Calculator
             int temp = int.Parse(view);
             temp = temp * -1;
             view = temp.ToString();
+            history = temp.ToString();
+            ShowHistory(history);
             ShowText(view);
         }
 
         private void Cancel_Click(object sender, EventArgs e)
         {
             view = null;
+            history = null;
             total = null;
             textBox1.Clear();
+            textBox2.Clear();
+            ShowHistory(history);
             ShowText(view);
         }
 
@@ -292,6 +340,11 @@ namespace Calculator
             }
             else
             {
+                history += "=";
+                history += total;
+                ShowHistory(history);
+
+                history = null;
                 view = null;
                 ShowText(total);
 
@@ -302,7 +355,7 @@ namespace Calculator
                 }
                 tmp += "=";
                 tmp += total;
-                history.Add(tmp);
+                
                 input.Clear();
                 total = null;
             }

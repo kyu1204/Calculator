@@ -52,16 +52,17 @@
             this.ButtonDot = new System.Windows.Forms.Button();
             this.Result = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.resultArrayBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.resultArrayBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resultArrayBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MC
             // 
-            this.MC.Location = new System.Drawing.Point(12, 72);
+            this.MC.Location = new System.Drawing.Point(12, 103);
             this.MC.Name = "MC";
             this.MC.Size = new System.Drawing.Size(61, 32);
             this.MC.TabIndex = 0;
@@ -70,7 +71,7 @@
             // 
             // M_plus
             // 
-            this.M_plus.Location = new System.Drawing.Point(79, 72);
+            this.M_plus.Location = new System.Drawing.Point(79, 103);
             this.M_plus.Name = "M_plus";
             this.M_plus.Size = new System.Drawing.Size(61, 32);
             this.M_plus.TabIndex = 0;
@@ -79,7 +80,7 @@
             // 
             // M_minus
             // 
-            this.M_minus.Location = new System.Drawing.Point(146, 72);
+            this.M_minus.Location = new System.Drawing.Point(146, 103);
             this.M_minus.Name = "M_minus";
             this.M_minus.Size = new System.Drawing.Size(61, 32);
             this.M_minus.TabIndex = 0;
@@ -88,7 +89,7 @@
             // 
             // MR
             // 
-            this.MR.Location = new System.Drawing.Point(213, 72);
+            this.MR.Location = new System.Drawing.Point(213, 103);
             this.MR.Name = "MR";
             this.MR.Size = new System.Drawing.Size(61, 32);
             this.MR.TabIndex = 0;
@@ -97,7 +98,7 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(12, 110);
+            this.Cancel.Location = new System.Drawing.Point(12, 141);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(61, 32);
             this.Cancel.TabIndex = 0;
@@ -107,7 +108,7 @@
             // 
             // Negative
             // 
-            this.Negative.Location = new System.Drawing.Point(79, 110);
+            this.Negative.Location = new System.Drawing.Point(79, 141);
             this.Negative.Name = "Negative";
             this.Negative.Size = new System.Drawing.Size(61, 32);
             this.Negative.TabIndex = 0;
@@ -117,7 +118,7 @@
             // 
             // Division
             // 
-            this.Division.Location = new System.Drawing.Point(146, 110);
+            this.Division.Location = new System.Drawing.Point(146, 141);
             this.Division.Name = "Division";
             this.Division.Size = new System.Drawing.Size(61, 32);
             this.Division.TabIndex = 0;
@@ -127,7 +128,7 @@
             // 
             // Multi
             // 
-            this.Multi.Location = new System.Drawing.Point(213, 110);
+            this.Multi.Location = new System.Drawing.Point(213, 141);
             this.Multi.Name = "Multi";
             this.Multi.Size = new System.Drawing.Size(61, 32);
             this.Multi.TabIndex = 0;
@@ -137,7 +138,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(12, 148);
+            this.button7.Location = new System.Drawing.Point(12, 179);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(61, 32);
             this.button7.TabIndex = 0;
@@ -147,7 +148,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(79, 148);
+            this.button8.Location = new System.Drawing.Point(79, 179);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(61, 32);
             this.button8.TabIndex = 0;
@@ -157,7 +158,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(146, 148);
+            this.button9.Location = new System.Drawing.Point(146, 179);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(61, 32);
             this.button9.TabIndex = 0;
@@ -167,7 +168,7 @@
             // 
             // Minus
             // 
-            this.Minus.Location = new System.Drawing.Point(213, 148);
+            this.Minus.Location = new System.Drawing.Point(213, 179);
             this.Minus.Name = "Minus";
             this.Minus.Size = new System.Drawing.Size(61, 32);
             this.Minus.TabIndex = 0;
@@ -177,7 +178,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 186);
+            this.button4.Location = new System.Drawing.Point(12, 217);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(61, 32);
             this.button4.TabIndex = 0;
@@ -187,7 +188,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(79, 186);
+            this.button5.Location = new System.Drawing.Point(79, 217);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(61, 32);
             this.button5.TabIndex = 0;
@@ -197,7 +198,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(146, 186);
+            this.button6.Location = new System.Drawing.Point(146, 217);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(61, 32);
             this.button6.TabIndex = 0;
@@ -207,7 +208,7 @@
             // 
             // Plus
             // 
-            this.Plus.Location = new System.Drawing.Point(213, 186);
+            this.Plus.Location = new System.Drawing.Point(213, 217);
             this.Plus.Name = "Plus";
             this.Plus.Size = new System.Drawing.Size(61, 32);
             this.Plus.TabIndex = 0;
@@ -217,7 +218,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 224);
+            this.button1.Location = new System.Drawing.Point(12, 255);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(61, 32);
             this.button1.TabIndex = 0;
@@ -227,7 +228,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(79, 224);
+            this.button2.Location = new System.Drawing.Point(79, 255);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(61, 32);
             this.button2.TabIndex = 0;
@@ -237,7 +238,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(146, 224);
+            this.button3.Location = new System.Drawing.Point(146, 255);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(61, 32);
             this.button3.TabIndex = 0;
@@ -247,7 +248,7 @@
             // 
             // button0
             // 
-            this.button0.Location = new System.Drawing.Point(12, 262);
+            this.button0.Location = new System.Drawing.Point(12, 293);
             this.button0.Name = "button0";
             this.button0.Size = new System.Drawing.Size(128, 32);
             this.button0.TabIndex = 0;
@@ -257,7 +258,7 @@
             // 
             // ButtonDot
             // 
-            this.ButtonDot.Location = new System.Drawing.Point(146, 262);
+            this.ButtonDot.Location = new System.Drawing.Point(146, 293);
             this.ButtonDot.Name = "ButtonDot";
             this.ButtonDot.Size = new System.Drawing.Size(61, 32);
             this.ButtonDot.TabIndex = 0;
@@ -267,7 +268,7 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(213, 224);
+            this.Result.Location = new System.Drawing.Point(213, 255);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(61, 70);
             this.Result.TabIndex = 0;
@@ -280,7 +281,7 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold);
-            this.textBox1.Location = new System.Drawing.Point(13, 13);
+            this.textBox1.Location = new System.Drawing.Point(13, 44);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -290,26 +291,35 @@
             // 
             // listBox1
             // 
-            this.listBox1.DataSource = this.resultArrayBindingSource;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(294, 13);
+            this.listBox1.Location = new System.Drawing.Point(297, 13);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(284, 292);
+            this.listBox1.Size = new System.Drawing.Size(281, 316);
             this.listBox1.TabIndex = 2;
             // 
             // form1BindingSource
             // 
             this.form1BindingSource.DataSource = typeof(Calculator.Form1);
             // 
-            // resultArrayBindingSource
+            // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textBox2.Location = new System.Drawing.Point(13, 13);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(261, 25);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 311);
+            this.ClientSize = new System.Drawing.Size(590, 337);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Plus);
@@ -336,8 +346,8 @@
             this.Controls.Add(this.MC);
             this.Name = "Form1";
             this.Text = "Calculator";
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultArrayBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,9 +378,10 @@
         private System.Windows.Forms.Button ButtonDot;
         private System.Windows.Forms.Button Result;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.BindingSource form1BindingSource;
         private System.Windows.Forms.BindingSource resultArrayBindingSource;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
