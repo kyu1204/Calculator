@@ -13,8 +13,9 @@ namespace Calculator
     public partial class Form1 : Form
     {
         List<string> historys; //연산 기록;
-        List<string> input; //전체 연산 행
-        string history;
+        List<string> input; //계산 할 전체 연산 행
+        string memory;
+        string history; //현재 연산 기록
         string view; //현재 입력한 숫자
         string total; //연산 완료된 숫자
 
@@ -182,6 +183,14 @@ namespace Calculator
             }
         }
 
+        private void RebindingListBox(ListBox listbox, List<string> list)
+        {
+            listbox.DataSource = null;
+            listbox.DataSource = list;
+        }
+
+
+
         private void Plus_Click(object sender, EventArgs e)
         {
             if (view != null)
@@ -203,6 +212,7 @@ namespace Calculator
                         ShowText(total);
                         view = null;
                         total = null;
+                        history = null;
                         input.Clear();
                     }
                     else
@@ -248,6 +258,7 @@ namespace Calculator
                         ShowText(total);
                         view = null;
                         total = null;
+                        history = null;
                         input.Clear();
                     }
                     else
@@ -293,6 +304,7 @@ namespace Calculator
                         ShowText(total);
                         view = null;
                         total = null;
+                        history = null;
                         input.Clear();
                     }
                     else
@@ -338,6 +350,7 @@ namespace Calculator
                         ShowText(total);
                         view = null;
                         total = null;
+                        history = null;
                         input.Clear();
                     }
                     else
@@ -390,28 +403,170 @@ namespace Calculator
 
         private void Result_Click(object sender, EventArgs e)
         {
-            total = ResultValue(double.Parse(view));
-            if (DivisionError(total) == 0)
+            if (view != null)
             {
-                ShowText(total);
-                view = null;
-                total = null;
-                input.Clear();
+                total = ResultValue(double.Parse(view));
+                if (DivisionError(total) == 0)
+                {
+                    ShowText(total);
+                    view = null;
+                    total = null;
+                    history = null;
+                    input.Clear();
+                }
+                else
+                {
+                    history += "=";
+                    history += total;
+                    ShowHistory(history);
+
+                    view = null;
+                    ShowText(total);
+
+                    input.Clear();
+                    historys.Add(history);
+                    historys.Add("---------------------------------------------");
+                    RebindingListBox(listBox1, historys);
+                    history = null;
+
+                }
             }
             else
             {
-                history += "=";
-                history += total;
-                ShowHistory(history);
-
-                view = null;
                 ShowText(total);
+            }
+        }
 
-                input.Clear();
-                historys.Add(history);
-                listBox1.Invalidate();
-                history = null;
+        private void M_plus_Click(object sender, EventArgs e)
+        {
+            if (memory == null)
+            {
+                if (view != null)
+                {
+                    if (total == null)
+                    {
+                        total = view;
+                        view = null;
+                        memory = string.Copy(total);
+                        total = null;
+                    }
+                    else
+                    {
+                        total = ResultValue(double.Parse(view));
+                        if (DivisionError(total) == 0)
+                        {
+                            ShowText(total);
+                            view = null;
+                            total = null;
+                            history = null;
+                            input.Clear();
+                        }
+                        else
+                        {
+                            view = null;
+                            history = null;
+                            memory = string.Copy(total);
+                            total = null;
+                            input.Clear();
+                        }
+                    }                   
+                }
+            }
+            else
+            {
+                if (view != null)
+                {
+                    if (total == null)
+                    {
+                        total = view;
+                        view = null;
+                        double tmp = double.Parse(memory);
+                        tmp += double.Parse(total);
+                        memory = tmp.ToString();
+                        total = null;
+                    }
+                    else
+                    {
+                        total = ResultValue(double.Parse(view));
+                        if (DivisionError(total) == 0)
+                        {
+                            ShowText(total);
+                            view = null;
+                            total = null;
+                            history = null;
+                            input.Clear();
+                        }
+                        else
+                        {
+                            view = null;
+                            history = null;
 
+                            double tmp = double.Parse(memory);
+                            tmp += double.Parse(total);
+                            memory = tmp.ToString();
+                            total = null;
+                            input.Clear();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void MR_Click(object sender, EventArgs e)
+        {
+            history = null;
+            view = null;
+            history += memory;
+
+            view += memory;
+            ShowHistory(history);
+            ShowText(view);
+        }
+
+        private void MC_Click(object sender, EventArgs e)
+        {
+            memory = null;
+        }
+
+        private void M_minus_Click(object sender, EventArgs e)
+        {
+            if (memory != null)
+            {
+                if (view != null)
+                {
+                    if (total == null)
+                    {
+                        total = view;
+                        view = null;
+                        double tmp = double.Parse(memory);
+                        tmp -= double.Parse(total);
+                        memory = tmp.ToString();
+                        total = null;
+                    }
+                    else
+                    {
+                        total = ResultValue(double.Parse(view));
+                        if (DivisionError(total) == 0)
+                        {
+                            ShowText(total);
+                            view = null;
+                            total = null;
+                            history = null;
+                            input.Clear();
+                        }
+                        else
+                        {
+                            view = null;
+                            history = null;
+
+                            double tmp = double.Parse(memory);
+                            tmp -= double.Parse(total);
+                            memory = tmp.ToString();
+                            total = null;
+                            input.Clear();
+                        }
+                    }
+                }
             }
         }
     }
