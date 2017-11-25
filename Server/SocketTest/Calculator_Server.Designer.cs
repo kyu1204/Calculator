@@ -1,4 +1,4 @@
-﻿namespace Server
+﻿namespace SocketTest
 {
     partial class Calculator_Server
     {

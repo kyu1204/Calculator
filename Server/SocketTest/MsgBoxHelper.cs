@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Server
+namespace SocketTest
 {
     /// <summary>
     /// 메세지박스를 쉽게 표시할 수 있도록 도와주는 함수를 노출하는 클래스입니다.
