@@ -19,6 +19,6 @@ Step 5
 >- Networking
 
 # Image
-![Server](F:\C#\Calculator_Server.JPG)
+![Server](./Image/Calculator_Server.JPG)
 
 
