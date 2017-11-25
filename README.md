@@ -4,18 +4,18 @@ C# Team Project
 Networking Calculator
 
 Step 1
-- Calculator UI
+>- Calculator UI
 
 Step 2
-- Arithmetic operation Function
+>- Arithmetic operation Function
 
 Step 3
-- Memory Function
+>- Memory Function
 
 Step 4
-- History
+>- History
 
 Step 5
-- Networking
+>- Networking
 
 
