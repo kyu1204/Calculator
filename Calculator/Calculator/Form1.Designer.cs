@@ -52,54 +52,69 @@
             this.ButtonDot = new System.Windows.Forms.Button();
             this.Result = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.resultArrayBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.resultArrayBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lb_IP = new System.Windows.Forms.Label();
+            this.txt_IP = new System.Windows.Forms.TextBox();
+            this.lb_Port = new System.Windows.Forms.Label();
+            this.txt_Port = new System.Windows.Forms.TextBox();
+            this.connected = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resultArrayBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MC
             // 
-            this.MC.Location = new System.Drawing.Point(12, 72);
+            this.MC.Location = new System.Drawing.Point(14, 129);
+            this.MC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MC.Name = "MC";
-            this.MC.Size = new System.Drawing.Size(61, 32);
+            this.MC.Size = new System.Drawing.Size(70, 40);
             this.MC.TabIndex = 0;
             this.MC.Text = "MC";
             this.MC.UseVisualStyleBackColor = true;
+            this.MC.Click += new System.EventHandler(this.MC_Click);
             // 
             // M_plus
             // 
-            this.M_plus.Location = new System.Drawing.Point(79, 72);
+            this.M_plus.Location = new System.Drawing.Point(90, 129);
+            this.M_plus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.M_plus.Name = "M_plus";
-            this.M_plus.Size = new System.Drawing.Size(61, 32);
+            this.M_plus.Size = new System.Drawing.Size(70, 40);
             this.M_plus.TabIndex = 0;
             this.M_plus.Text = "M+";
             this.M_plus.UseVisualStyleBackColor = true;
+            this.M_plus.Click += new System.EventHandler(this.M_plus_Click);
             // 
             // M_minus
             // 
-            this.M_minus.Location = new System.Drawing.Point(146, 72);
+            this.M_minus.Location = new System.Drawing.Point(167, 129);
+            this.M_minus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.M_minus.Name = "M_minus";
-            this.M_minus.Size = new System.Drawing.Size(61, 32);
+            this.M_minus.Size = new System.Drawing.Size(70, 40);
             this.M_minus.TabIndex = 0;
             this.M_minus.Text = "M-";
             this.M_minus.UseVisualStyleBackColor = true;
+            this.M_minus.Click += new System.EventHandler(this.M_minus_Click);
             // 
             // MR
             // 
-            this.MR.Location = new System.Drawing.Point(213, 72);
+            this.MR.Location = new System.Drawing.Point(243, 129);
+            this.MR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MR.Name = "MR";
-            this.MR.Size = new System.Drawing.Size(61, 32);
+            this.MR.Size = new System.Drawing.Size(70, 40);
             this.MR.TabIndex = 0;
             this.MR.Text = "MR";
             this.MR.UseVisualStyleBackColor = true;
+            this.MR.Click += new System.EventHandler(this.MR_Click);
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(12, 110);
+            this.Cancel.Location = new System.Drawing.Point(14, 176);
+            this.Cancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(61, 32);
+            this.Cancel.Size = new System.Drawing.Size(70, 40);
             this.Cancel.TabIndex = 0;
             this.Cancel.Text = "C";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -107,9 +122,10 @@
             // 
             // Negative
             // 
-            this.Negative.Location = new System.Drawing.Point(79, 110);
+            this.Negative.Location = new System.Drawing.Point(90, 176);
+            this.Negative.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Negative.Name = "Negative";
-            this.Negative.Size = new System.Drawing.Size(61, 32);
+            this.Negative.Size = new System.Drawing.Size(70, 40);
             this.Negative.TabIndex = 0;
             this.Negative.Text = "±";
             this.Negative.UseVisualStyleBackColor = true;
@@ -117,9 +133,10 @@
             // 
             // Division
             // 
-            this.Division.Location = new System.Drawing.Point(146, 110);
+            this.Division.Location = new System.Drawing.Point(167, 176);
+            this.Division.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Division.Name = "Division";
-            this.Division.Size = new System.Drawing.Size(61, 32);
+            this.Division.Size = new System.Drawing.Size(70, 40);
             this.Division.TabIndex = 0;
             this.Division.Text = "÷";
             this.Division.UseVisualStyleBackColor = true;
@@ -127,9 +144,10 @@
             // 
             // Multi
             // 
-            this.Multi.Location = new System.Drawing.Point(213, 110);
+            this.Multi.Location = new System.Drawing.Point(243, 176);
+            this.Multi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Multi.Name = "Multi";
-            this.Multi.Size = new System.Drawing.Size(61, 32);
+            this.Multi.Size = new System.Drawing.Size(70, 40);
             this.Multi.TabIndex = 0;
             this.Multi.Text = "×";
             this.Multi.UseVisualStyleBackColor = true;
@@ -137,9 +155,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(12, 148);
+            this.button7.Location = new System.Drawing.Point(14, 224);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(61, 32);
+            this.button7.Size = new System.Drawing.Size(70, 40);
             this.button7.TabIndex = 0;
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = true;
@@ -147,9 +166,10 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(79, 148);
+            this.button8.Location = new System.Drawing.Point(90, 224);
+            this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(61, 32);
+            this.button8.Size = new System.Drawing.Size(70, 40);
             this.button8.TabIndex = 0;
             this.button8.Text = "8";
             this.button8.UseVisualStyleBackColor = true;
@@ -157,9 +177,10 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(146, 148);
+            this.button9.Location = new System.Drawing.Point(167, 224);
+            this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(61, 32);
+            this.button9.Size = new System.Drawing.Size(70, 40);
             this.button9.TabIndex = 0;
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = true;
@@ -167,9 +188,10 @@
             // 
             // Minus
             // 
-            this.Minus.Location = new System.Drawing.Point(213, 148);
+            this.Minus.Location = new System.Drawing.Point(243, 224);
+            this.Minus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Minus.Name = "Minus";
-            this.Minus.Size = new System.Drawing.Size(61, 32);
+            this.Minus.Size = new System.Drawing.Size(70, 40);
             this.Minus.TabIndex = 0;
             this.Minus.Text = "-";
             this.Minus.UseVisualStyleBackColor = true;
@@ -177,9 +199,10 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 186);
+            this.button4.Location = new System.Drawing.Point(14, 271);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(61, 32);
+            this.button4.Size = new System.Drawing.Size(70, 40);
             this.button4.TabIndex = 0;
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = true;
@@ -187,9 +210,10 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(79, 186);
+            this.button5.Location = new System.Drawing.Point(90, 271);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(61, 32);
+            this.button5.Size = new System.Drawing.Size(70, 40);
             this.button5.TabIndex = 0;
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = true;
@@ -197,9 +221,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(146, 186);
+            this.button6.Location = new System.Drawing.Point(167, 271);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(61, 32);
+            this.button6.Size = new System.Drawing.Size(70, 40);
             this.button6.TabIndex = 0;
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = true;
@@ -207,9 +232,10 @@
             // 
             // Plus
             // 
-            this.Plus.Location = new System.Drawing.Point(213, 186);
+            this.Plus.Location = new System.Drawing.Point(243, 271);
+            this.Plus.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Plus.Name = "Plus";
-            this.Plus.Size = new System.Drawing.Size(61, 32);
+            this.Plus.Size = new System.Drawing.Size(70, 40);
             this.Plus.TabIndex = 0;
             this.Plus.Text = "+";
             this.Plus.UseVisualStyleBackColor = true;
@@ -217,9 +243,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 224);
+            this.button1.Location = new System.Drawing.Point(14, 319);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 32);
+            this.button1.Size = new System.Drawing.Size(70, 40);
             this.button1.TabIndex = 0;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
@@ -227,9 +254,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(79, 224);
+            this.button2.Location = new System.Drawing.Point(90, 319);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 32);
+            this.button2.Size = new System.Drawing.Size(70, 40);
             this.button2.TabIndex = 0;
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = true;
@@ -237,9 +265,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(146, 224);
+            this.button3.Location = new System.Drawing.Point(167, 319);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 32);
+            this.button3.Size = new System.Drawing.Size(70, 40);
             this.button3.TabIndex = 0;
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = true;
@@ -247,9 +276,10 @@
             // 
             // button0
             // 
-            this.button0.Location = new System.Drawing.Point(12, 262);
+            this.button0.Location = new System.Drawing.Point(14, 366);
+            this.button0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button0.Name = "button0";
-            this.button0.Size = new System.Drawing.Size(128, 32);
+            this.button0.Size = new System.Drawing.Size(146, 40);
             this.button0.TabIndex = 0;
             this.button0.Text = "0";
             this.button0.UseVisualStyleBackColor = true;
@@ -257,9 +287,10 @@
             // 
             // ButtonDot
             // 
-            this.ButtonDot.Location = new System.Drawing.Point(146, 262);
+            this.ButtonDot.Location = new System.Drawing.Point(167, 366);
+            this.ButtonDot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ButtonDot.Name = "ButtonDot";
-            this.ButtonDot.Size = new System.Drawing.Size(61, 32);
+            this.ButtonDot.Size = new System.Drawing.Size(70, 40);
             this.ButtonDot.TabIndex = 0;
             this.ButtonDot.Text = ".";
             this.ButtonDot.UseVisualStyleBackColor = true;
@@ -267,9 +298,10 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(213, 224);
+            this.Result.Location = new System.Drawing.Point(243, 319);
+            this.Result.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Result.Name = "Result";
-            this.Result.Size = new System.Drawing.Size(61, 70);
+            this.Result.Size = new System.Drawing.Size(70, 88);
             this.Result.TabIndex = 0;
             this.Result.Text = "=";
             this.Result.UseVisualStyleBackColor = true;
@@ -280,36 +312,94 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold);
-            this.textBox1.Location = new System.Drawing.Point(13, 13);
+            this.textBox1.Location = new System.Drawing.Point(15, 55);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(261, 40);
+            this.textBox1.Size = new System.Drawing.Size(298, 49);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // listBox1
             // 
-            this.listBox1.DataSource = this.resultArrayBindingSource;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(294, 13);
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(339, 46);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(284, 292);
+            this.listBox1.Size = new System.Drawing.Size(342, 364);
             this.listBox1.TabIndex = 2;
             // 
-            // form1BindingSource
+            // textBox2
             // 
-            this.form1BindingSource.DataSource = typeof(Calculator.Form1);
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.Enabled = false;
+            this.textBox2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.textBox2.Location = new System.Drawing.Point(15, 16);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(298, 30);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // resultArrayBindingSource
+            // lb_IP
             // 
+            this.lb_IP.AutoSize = true;
+            this.lb_IP.Font = new System.Drawing.Font("굴림", 10F);
+            this.lb_IP.Location = new System.Drawing.Point(336, 17);
+            this.lb_IP.Name = "lb_IP";
+            this.lb_IP.Size = new System.Drawing.Size(26, 17);
+            this.lb_IP.TabIndex = 4;
+            this.lb_IP.Text = "IP:";
+            // 
+            // txt_IP
+            // 
+            this.txt_IP.Location = new System.Drawing.Point(368, 15);
+            this.txt_IP.Name = "txt_IP";
+            this.txt_IP.Size = new System.Drawing.Size(100, 25);
+            this.txt_IP.TabIndex = 5;
+            // 
+            // lb_Port
+            // 
+            this.lb_Port.AutoSize = true;
+            this.lb_Port.Font = new System.Drawing.Font("굴림", 10F);
+            this.lb_Port.Location = new System.Drawing.Point(479, 16);
+            this.lb_Port.Name = "lb_Port";
+            this.lb_Port.Size = new System.Drawing.Size(43, 17);
+            this.lb_Port.TabIndex = 4;
+            this.lb_Port.Text = "Port:";
+            // 
+            // txt_Port
+            // 
+            this.txt_Port.Location = new System.Drawing.Point(528, 14);
+            this.txt_Port.Name = "txt_Port";
+            this.txt_Port.Size = new System.Drawing.Size(100, 25);
+            this.txt_Port.TabIndex = 5;
+            // 
+            // connected
+            // 
+            this.connected.Location = new System.Drawing.Point(634, 14);
+            this.connected.Name = "connected";
+            this.connected.Size = new System.Drawing.Size(47, 26);
+            this.connected.TabIndex = 6;
+            this.connected.Text = "연결";
+            this.connected.UseVisualStyleBackColor = true;
+            this.connected.Click += new System.EventHandler(this.connected_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 311);
+            this.ClientSize = new System.Drawing.Size(693, 421);
+            this.Controls.Add(this.connected);
+            this.Controls.Add(this.txt_Port);
+            this.Controls.Add(this.lb_Port);
+            this.Controls.Add(this.txt_IP);
+            this.Controls.Add(this.lb_IP);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Plus);
@@ -334,10 +424,12 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.M_plus);
             this.Controls.Add(this.MC);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Calculator";
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resultArrayBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,9 +460,15 @@
         private System.Windows.Forms.Button ButtonDot;
         private System.Windows.Forms.Button Result;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.BindingSource form1BindingSource;
         private System.Windows.Forms.BindingSource resultArrayBindingSource;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lb_IP;
+        private System.Windows.Forms.TextBox txt_IP;
+        private System.Windows.Forms.Label lb_Port;
+        private System.Windows.Forms.TextBox txt_Port;
+        private System.Windows.Forms.Button connected;
     }
 }
 
