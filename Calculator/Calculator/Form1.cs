@@ -46,7 +46,6 @@ namespace Calculator
             historys = new List<string>();
             listBox1.DataSource = historys; //Listbox에 컬렉션 연결
             listBox1.Invalidate();
-
         }
  /// <summary>
  /// 네트워크 통신
@@ -285,6 +284,11 @@ namespace Calculator
         {
             if (view != null) //view 값이 null이 아님 즉 값이 입력 되었을때에 처리
             {
+                if(view.EndsWith("."))
+                {
+                    view = view.Remove(view.LastIndexOf('.'));
+                    history = history.Remove(history.LastIndexOf('.'));
+                }
                 history += "+"; //history --> '직전값' '+' 
                 ShowHistory(history); //화면에 띄우기
                 if (total == null) //total 값이 null 즉 첫번째로 입력된 숫자
@@ -293,6 +297,7 @@ namespace Calculator
                     input.Add(view); //계산을 위한 연산식에 추가
                     input.Add("+"); //다음에 입력받을 숫자와 + 하려는 것이기 때문에 + 기호 추가
                     view = null; //값이 저장 되었으니 입력된 현재값은 제거
+                    ShowText(total);
                 }
                 else //total 값이 null이 아님 즉 첫번째 값이 아님
                 {
@@ -331,6 +336,12 @@ namespace Calculator
         {
             if (view != null)
             {
+                if (view.EndsWith("."))
+                {
+                    view = view.Remove(view.LastIndexOf('.'));
+                    history = history.Remove(history.LastIndexOf('.'));
+
+                }
                 history += "-";
                 ShowHistory(history);
                 if (total == null)
@@ -377,6 +388,12 @@ namespace Calculator
         {
             if (view != null)
             {
+                if (view.EndsWith("."))
+                {
+                    view = view.Remove(view.LastIndexOf('.'));
+                    history = history.Remove(history.LastIndexOf('.'));
+
+                }
                 history += "×";
                 ShowHistory(history);
                 if (total == null)
@@ -413,7 +430,7 @@ namespace Calculator
                     history += "×";
                     ShowHistory(history);
                     total = ResultValue(double.Parse(input[input.Count - 2]));
-                    input.Add("×");
+                    input.Add("*");
                     ShowText(total);
                 }
             }
@@ -423,6 +440,12 @@ namespace Calculator
         {
             if (view != null)
             {
+                if (view.EndsWith("."))
+                {
+                    view = view.Remove(view.LastIndexOf('.'));
+                    history = history.Remove(history.LastIndexOf('.'));
+
+                }
                 history += "÷";
                 ShowHistory(history);
                 if (total == null)
@@ -467,12 +490,15 @@ namespace Calculator
 
         private void Negative_Click(object sender, EventArgs e) //± 버튼 클릭 처리
         {
-            double temp = double.Parse(view);// 현재 입력된 값을 실수로 옮김
-            temp = temp * -1; //그 후 -1을 곱함 (음수면 양수 양수면 음수)
-            view = temp.ToString(); //다시 문자열화 시켜서 view에 저장
-            history = temp.ToString();
-            ShowHistory(history);
-            ShowText(view);
+            if (view != null)
+            {
+                double temp = double.Parse(view);// 현재 입력된 값을 실수로 옮김
+                temp = temp * -1; //그 후 -1을 곱함 (음수면 양수 양수면 음수)
+                view = temp.ToString(); //다시 문자열화 시켜서 view에 저장
+                history = temp.ToString();
+                ShowHistory(history);
+                ShowText(view);
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e) //C 버튼 클릭 처리
@@ -480,6 +506,7 @@ namespace Calculator
             view = null; //view, history total textbox1 textbox2 모두 클리어
             history = null;
             total = null;
+            input.Clear();
             textBox1.Clear();
             textBox2.Clear();
             ShowHistory(history);
@@ -501,36 +528,49 @@ namespace Calculator
         {
             if (view != null) //view가 null이 아니면 즉 입력값이 있다면
             {
-                total = ResultValue(double.Parse(view)); //현재 값 까지 최종값 계산
-                if (DivisionError(total) == 0) //0 나누기 에러 처리
+                if (view.EndsWith("."))
                 {
-                    ShowText(total);
-                    view = null;
-                    total = null;
-                    history = null;
-                    input.Clear();
+                    view = view.Remove(view.LastIndexOf('.'));
+                    history += view;
+                }
+                if (total == null)
+                {
+                    ShowText(view);
                 }
                 else
                 {
-                    history += "="; //기록에 = 추가
-                    history += total; //최종값 추가
-                    ShowHistory(history);
-
-                    view = null; //현재 입력값 초기화
-                    ShowText(total); //최종값 화면에 보이기
-
-                    input.Clear(); //연산식 초기화
-
-                    /////// Send //////
-                    if(mainSock.IsBound)
+                    total = ResultValue(double.Parse(view)); //현재 값 까지 최종값 계산
+                    if (DivisionError(total) == 0) //0 나누기 에러 처리
                     {
-                        OnSendData();
+                        ShowText(total);
+                        view = null;
+                        total = null;
+                        history = null;
+                        input.Clear();
                     }
-                    historys.Add(history); //현재 연산기록을 리스트 박스에 등록하기위해 List에 추가
-                    historys.Add("-------------------------------------------------"); //구분선 추가
-                    RebindingListBox(listBox1, historys); //Listbox 업데이트
-                    history = null; //현재 연산기록 초기화
+                    else
+                    {
+                        history += "="; //기록에 = 추가
+                        history += total; //최종값 추가
+                        ShowHistory(history);
 
+                        view = null; //현재 입력값 초기화
+                        ShowText(total); //최종값 화면에 보이기
+
+                        total = null;
+                        input.Clear(); //연산식 초기화
+
+                        /////// Send //////
+                        if (mainSock.IsBound)
+                        {
+                            OnSendData();
+                        }
+                        historys.Add(history); //현재 연산기록을 리스트 박스에 등록하기위해 List에 추가
+                        historys.Add("-------------------------------------------------"); //구분선 추가
+                        RebindingListBox(listBox1, historys); //Listbox 업데이트
+                        history = null; //현재 연산기록 초기화
+
+                    }
                 }
             }
             else
@@ -545,10 +585,20 @@ namespace Calculator
             {
                 if (view != null) //view가 널이 아니면 즉 입력값이 존재 할때
                 {
+                    if (view.EndsWith("."))
+                    {
+                        view = view.Remove(view.LastIndexOf('.'));
+                        history += view;
+                    }
                     if (total == null) //total 이 null일때 즉 계산식이 없고 입력값만 존재할 때
                     {
                         memory = string.Copy(view); //현재 입력값을 memory에 등록
+                        historys.Add("Memory에 값이 성공적으로 저장 되었습니다.");
+                        historys.Add(string.Format("Memory: {0}", memory));
+                        historys.Add("-------------------------------------------------");
+                        RebindingListBox(listBox1, historys);
                         view = null;
+                        history = null;
                     }
                     else //total이 존재 할 때 즉 계산식이 존재할때
                     {
@@ -566,6 +616,10 @@ namespace Calculator
                             view = null; //입력값 초기화
                             history = null; //기록 초기화
                             memory = string.Copy(total); //메모리에 최종연산값 등록
+                            historys.Add("Memory에 값이 성공적으로 저장 되었습니다.");
+                            historys.Add(string.Format("Memory: {0}", memory));
+                            historys.Add("-------------------------------------------------");
+                            RebindingListBox(listBox1, historys);
                             total = null; //최종값 초기화
                             input.Clear(); //연산식 초기화
                         }
@@ -576,12 +630,22 @@ namespace Calculator
             {
                 if (view != null) //view가 null이 아닐때 즉 입력값이 존재할때
                 {
+                    if (view.EndsWith("."))
+                    {
+                        view = view.Remove(view.LastIndexOf('.'));
+                        history += view;
+                    }
                     if (total == null) //total이 null일때 즉 연산이 없고 첫번째 입력값일때
                     {
                         double tmp = double.Parse(memory); //메모리값을 읽어와서 double로 변경
                         tmp += double.Parse(view); //현재 입력값을 기존 메모리값에 더함
                         memory = tmp.ToString(); //더한 값을 memory에 저장
+                        historys.Add("Memory에 값이 성공적으로 저장 되었습니다.");
+                        historys.Add(string.Format("Memory: {0}", memory));
+                        historys.Add("-------------------------------------------------");
+                        RebindingListBox(listBox1, historys);
                         view = null; //현재값 초기화
+                        history = null;
                     }
                     else //total이 null이 아닐때 즉 계산식이 존재할 때
                     {
@@ -602,6 +666,10 @@ namespace Calculator
                             double tmp = double.Parse(memory); //메모리값 읽어오기
                             tmp += double.Parse(total); //최종연산값 기존 메모리값에 더하기
                             memory = tmp.ToString(); //메모리에 저장
+                            historys.Add("Memory에 값이 성공적으로 저장 되었습니다.");
+                            historys.Add(string.Format("Memory: {0}", memory));
+                            historys.Add("-------------------------------------------------");
+                            RebindingListBox(listBox1, historys);
                             total = null; //최종값 날리기
                             input.Clear(); //연산식 날리기
                         }
@@ -632,13 +700,23 @@ namespace Calculator
             {
                 if (view != null)
                 {
+                    if (view.EndsWith("."))
+                    {
+                        view = view.Remove(view.LastIndexOf('.'));
+                        history += view;
+                    }
                     if (total == null)
                     {
                         total = view;
                         view = null;
+                        history = null;
                         double tmp = double.Parse(memory);
                         tmp -= double.Parse(total);
                         memory = tmp.ToString();
+                        historys.Add("Memory에 값이 성공적으로 저장 되었습니다.");
+                        historys.Add(string.Format("Memory: {0}", memory));
+                        historys.Add("-------------------------------------------------");
+                        RebindingListBox(listBox1, historys);
                         total = null;
                     }
                     else
@@ -660,6 +738,10 @@ namespace Calculator
                             double tmp = double.Parse(memory);
                             tmp -= double.Parse(total);
                             memory = tmp.ToString();
+                            historys.Add("Memory에 값이 성공적으로 저장 되었습니다.");
+                            historys.Add(string.Format("Memory: {0}", memory));
+                            historys.Add("-------------------------------------------------");
+                            RebindingListBox(listBox1, historys);
                             total = null;
                             input.Clear();
                         }
@@ -667,10 +749,46 @@ namespace Calculator
                 }
             }
         }
-/// <summary>
-/// 내부에서 사용하는 사용자 메서드 부분
-/// </summary>
-/// <param name="v"></param>
+        //private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    this.Text = e.KeyChar.ToString();
+        //    switch (e.KeyChar)
+        //    {
+        //        case '+':
+        //            this.Plus_Click(sender, e);
+        //            break;
+        //        case '-':
+        //            this.Minus_Click(sender, e);
+        //            break;
+        //        case '*':
+        //            this.Multi_Click(sender, e);
+        //            break;
+        //        case '/':
+        //            this.Division_Click(sender, e);
+        //            break;
+        //        case (char)Keys.Enter:
+        //            this.Result_Click(sender, e);
+        //            break;
+        //        case (char)'.':
+        //            this.ButtonDot_Click(sender, e);
+        //            break;
+        //        default:
+        //            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+        //            {
+        //                int value = int.Parse(e.KeyChar.ToString()) % 48;
+        //                view += value.ToString();
+        //                history += value.ToString();
+
+        //                ShowText(view);
+        //                ShowHistory(history);
+        //            }
+        //            break;
+        //    }
+        //}
+        /// <summary>
+        /// 내부에서 사용하는 사용자 메서드 부분
+        /// </summary>
+        /// <param name="v"></param>
         private void ShowHistory(string v) //textbox2 위 텍스트박스(기록 모니터)에 데이터 띄우는 함수
         {
             textBox2.Text = v;
@@ -740,9 +858,9 @@ namespace Calculator
         {
             listbox.DataSource = null;
             listbox.DataSource = list;
+            listBox1.SelectedIndex = listBox1.Items.Count - 1;
+            listBox1.SetSelected(listBox1.Items.Count - 1, false);
         }
-
-        
 
         
     }
