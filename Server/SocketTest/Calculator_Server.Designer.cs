@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator_Server));
             this.txt_IP = new System.Windows.Forms.TextBox();
             this.txt_Port = new System.Windows.Forms.TextBox();
             this.lb_Port = new System.Windows.Forms.Label();
@@ -38,34 +39,36 @@
             // 
             // txt_IP
             // 
-            this.txt_IP.Location = new System.Drawing.Point(86, 18);
+            this.txt_IP.Location = new System.Drawing.Point(75, 14);
+            this.txt_IP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_IP.Name = "txt_IP";
-            this.txt_IP.Size = new System.Drawing.Size(175, 25);
+            this.txt_IP.Size = new System.Drawing.Size(154, 21);
             this.txt_IP.TabIndex = 0;
             // 
             // txt_Port
             // 
-            this.txt_Port.Location = new System.Drawing.Point(317, 18);
+            this.txt_Port.Location = new System.Drawing.Point(277, 14);
+            this.txt_Port.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Port.Name = "txt_Port";
-            this.txt_Port.Size = new System.Drawing.Size(175, 25);
+            this.txt_Port.Size = new System.Drawing.Size(154, 21);
             this.txt_Port.TabIndex = 0;
             this.txt_Port.Text = "50000";
             // 
             // lb_Port
             // 
             this.lb_Port.AutoSize = true;
-            this.lb_Port.Location = new System.Drawing.Point(277, 21);
+            this.lb_Port.Location = new System.Drawing.Point(242, 17);
             this.lb_Port.Name = "lb_Port";
-            this.lb_Port.Size = new System.Drawing.Size(34, 15);
+            this.lb_Port.Size = new System.Drawing.Size(27, 12);
             this.lb_Port.TabIndex = 1;
             this.lb_Port.Text = "Port";
             // 
             // lb_IP
             // 
             this.lb_IP.AutoSize = true;
-            this.lb_IP.Location = new System.Drawing.Point(12, 21);
+            this.lb_IP.Location = new System.Drawing.Point(10, 17);
             this.lb_IP.Name = "lb_IP";
-            this.lb_IP.Size = new System.Drawing.Size(65, 15);
+            this.lb_IP.Size = new System.Drawing.Size(56, 12);
             this.lb_IP.TabIndex = 1;
             this.lb_IP.Text = "IPAdress";
             // 
@@ -73,18 +76,20 @@
             // 
             this.txt_history.BackColor = System.Drawing.Color.White;
             this.txt_history.Enabled = false;
-            this.txt_history.Location = new System.Drawing.Point(15, 58);
+            this.txt_history.Location = new System.Drawing.Point(13, 46);
+            this.txt_history.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_history.Multiline = true;
             this.txt_history.Name = "txt_history";
             this.txt_history.ReadOnly = true;
-            this.txt_history.Size = new System.Drawing.Size(610, 333);
+            this.txt_history.Size = new System.Drawing.Size(534, 267);
             this.txt_history.TabIndex = 2;
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(512, 18);
+            this.start.Location = new System.Drawing.Point(448, 14);
+            this.start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(113, 25);
+            this.start.Size = new System.Drawing.Size(99, 20);
             this.start.TabIndex = 3;
             this.start.Text = "시작";
             this.start.UseVisualStyleBackColor = true;
@@ -92,15 +97,17 @@
             // 
             // Calculator_Server
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 403);
+            this.ClientSize = new System.Drawing.Size(557, 322);
             this.Controls.Add(this.start);
             this.Controls.Add(this.txt_history);
             this.Controls.Add(this.lb_IP);
             this.Controls.Add(this.lb_Port);
             this.Controls.Add(this.txt_Port);
             this.Controls.Add(this.txt_IP);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Calculator_Server";
             this.Text = "Calculator Server";
             this.Load += new System.EventHandler(this.Form1_Load);
